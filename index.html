@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For You 💌</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap');
+
+    body {
+      background: linear-gradient(180deg, #ffe6f7, #d6f0ff);
+      height: 100vh;
+      font-family: 'Nunito', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin: 0;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 25px;
+      box-shadow: 0 8px 25px rgba(255, 182, 193, 0.5);
+      width: 320px;
+      text-align: center;
+      padding: 25px;
+      position: relative;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    h1 {
+      color: #ff8ccf;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #6b6b6b;
+      font-size: 16px;
+    }
+
+    img {
+      width: 130px;
+      animation: wiggle 2s ease-in-out infinite;
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(3deg); }
+    }
+
+    button {
+      margin-top: 20px;
+      background: #ffb6e6;
+      color: white;
+      border: none;
+      border-radius: 15px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(255, 182, 193, 0.5);
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #ff8ccf;
+      transform: scale(1.05);
+    }
+
+    /* Floating stars */
+    .star {
+      position: absolute;
+      color: #ffd6ec;
+      font-size: 20px;
+      animation: twinkle 3s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; transform: translateY(0); }
+      50% { opacity: 1; transform: translateY(-10px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>For You 💌</h1>
+    <img id="char" src="https://i.pinimg.com/originals/b1/ba/4a/b1ba4a78614e2ddf2c5b78b9ee931d2d.gif" alt="Cute character">
+    <p id="message">Hai Dinii 💕 ini aku buat khusus buat kamu! 🌸</p>
+    <button onclick="nextMessage()">Buka pesanku 💖</button>
+  </div>
+
+  <script>
+    const messages = [
+      "Hai Dinii 💕 ini aku buat khusus buat kamu! 🌸",
+      "Aku bangga banget sama kamu, semangat terus ya 💖",
+      "Jangan lupa istirahat dan makan yang enak 🍓",
+      "Kamu tuh manis banget, kayak karakter Sanrio 💞",
+      "Makasih udah selalu baik dan kuat ya, aku dukung kamu 🩷",
+      "Selamat! kamu udah sampai sejauh ini, aku bangga banget 💌"
+    ];
+
+    let i = 0;
+    function nextMessage() {
+      i = (i + 1) % messages.length;
+      document.getElementById("message").textContent = messages[i];
+    }
+
+    // bintang-bintang imut ✨
+    for (let j = 0; j < 20; j++) {
+      let star = document.createElement("div");
+      star.classList.add("star");
+      star.textContent = "✦";
+      star.style.left = Math.random() * 100 + "vw";
+      star.style.top = Math.random() * 100 + "vh";
+      star.style.animationDuration = 2 + Math.random() * 2 + "s";
+      document.body.appendChild(star);
+    }
+  </script>
+</body>
+</html>

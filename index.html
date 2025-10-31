@@ -8,7 +8,7 @@
     @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap');
 
     body {
-      background: linear-gradient(180deg, #ffe6f7, #d6f0ff);
+      background: linear-gradient(180deg, #ffd6ec, #fff0f8);
       height: 100vh;
       font-family: 'Nunito', sans-serif;
       display: flex;
@@ -22,11 +22,12 @@
       background: #fff;
       border-radius: 25px;
       box-shadow: 0 8px 25px rgba(255, 182, 193, 0.5);
-      width: 320px;
+      width: 330px;
       text-align: center;
       padding: 25px;
       position: relative;
       animation: float 3s ease-in-out infinite;
+      transition: all 0.5s ease;
     }
 
     @keyframes float {
@@ -36,7 +37,7 @@
     }
 
     h1 {
-      color: #ff8ccf;
+      color: #ff80b5;
       font-size: 24px;
       margin-bottom: 10px;
     }
@@ -44,16 +45,19 @@
     p {
       color: #6b6b6b;
       font-size: 16px;
+      opacity: 1;
+      transition: opacity 0.6s ease;
     }
 
     img {
       width: 130px;
       animation: wiggle 2s ease-in-out infinite;
+      margin-bottom: 15px;
     }
 
     @keyframes wiggle {
       0%, 100% { transform: rotate(0deg); }
-      50% { transform: rotate(3deg); }
+      50% { transform: rotate(2deg); }
     }
 
     button {
@@ -74,7 +78,6 @@
       transform: scale(1.05);
     }
 
-    /* Floating stars */
     .star {
       position: absolute;
       color: #ffd6ec;
@@ -92,7 +95,7 @@
 <body>
   <div class="card">
     <h1>For You 💌</h1>
-    <img id="char" src="https://i.pinimg.com/originals/b1/ba/4a/b1ba4a78614e2ddf2c5b78b9ee931d2d.gif" alt="Cute character">
+    <img id="char" src="https://i.pinimg.com/originals/2a/79/87/2a7987f7ab60e2302fc98842f39de67c.gif" alt="Hello Kitty">
     <p id="message">Hai Dinii 💕 ini aku buat khusus buat kamu! 🌸</p>
     <button onclick="nextMessage()">Buka pesanku 💖</button>
   </div>
@@ -102,15 +105,21 @@
       "Hai Dinii 💕 ini aku buat khusus buat kamu! 🌸",
       "Aku bangga banget sama kamu, semangat terus ya 💖",
       "Jangan lupa istirahat dan makan yang enak 🍓",
-      "Kamu tuh manis banget, kayak karakter Sanrio 💞",
-      "Makasih udah selalu baik dan kuat ya, aku dukung kamu 🩷",
+      "Kamu tuh manis banget, kayak Hello Kitty 🩷",
+      "Makasih udah selalu baik dan kuat ya, aku dukung kamu 🫶",
       "Selamat! kamu udah sampai sejauh ini, aku bangga banget 💌"
     ];
 
     let i = 0;
+    const msg = document.getElementById("message");
+
     function nextMessage() {
-      i = (i + 1) % messages.length;
-      document.getElementById("message").textContent = messages[i];
+      msg.style.opacity = 0;
+      setTimeout(() => {
+        i = (i + 1) % messages.length;
+        msg.textContent = messages[i];
+        msg.style.opacity = 1;
+      }, 400);
     }
 
     // bintang-bintang imut ✨
